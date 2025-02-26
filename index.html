@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourism in Bangladesh</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="../assets/logo/logoipsum-357.svg">
+    <style>
+        /* Custom Styles */
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Responsive Section Heights */
+        #new,
+        #about,
+        #popular-destination,
+        #contact,
+        #our-services {
+            padding: 60px 0;
+            min-height: 100vh;
+        }
+
+        #contact {
+            width: 90%;
+            max-width: 60vw;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .navbar-custom {
+            background: linear-gradient(90deg, #3f66cf, #3b82f6);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-custom .nav-link {
+            color: #fff !important;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-custom .nav-link:hover {
+            color: #ffd700 !important;
+            transform: translateY(-2px);
+        }
+
+        .btn-custom {
+            background: #3b82f6;
+            color: #fff;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background: #1e3a8a;
+            transform: translateY(-2px);
+        }
+
+        .form-control-custom {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+        }
+
+        .form-control-custom::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Hero Section with Carousel */
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-item {
+            min-height: 50vh;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .carousel-item:nth-child(1) {
+            background-image: url('../assets/logo/cover.jpg');
+        }
+
+        .carousel-item:nth-child(2) {
+            background-image: url('../assets/logo/cover1.jpg');
+        }
+
+        .carousel-item:nth-child(3) {
+            background-image: url('../assets/logo/cover3.jpg');
+        }
+
+        .carousel-caption {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .carousel-caption h1 {
+            font-size: clamp(1.5rem, 5vw, 3rem);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .carousel-caption p {
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+            margin-bottom: 20px;
+        }
+
+        .carousel-caption .btn {
+            font-size: clamp(0.8rem, 2.5vw, 1.1rem);
+            padding: 8px 20px;
+        }
+
+        /* Feature Section */
+        .feature-section {
+            padding: 40px 0;
+        }
+
+        .feature-section .feature-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-section .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-section .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .feature-section .feature-card p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 30px 0;
+        }
+
+        .footer .logo {
+            width: 80px;
+            /* Increased logo size */
+            height: auto;
+        }
+
+        .footer .company-info {
+            text-align: center;
+        }
+
+        .footer .company-info .company-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .footer .company-info .copyright {
+            font-size: 12px;
+            color: #bdc3c7;
+        }
+
+        .footer .social-icons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .footer .social-icons a {
+            width: 35px;
+            height: 35px;
+            background-color: #326191;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .footer .social-icons a:hover {
+            background-color: #1abc9c;
+        }
+
+        .footer .social-icons svg {
+            width: 18px;
+            height: 18px;
+            fill: #fff;
+        }
+
+        /* Media Queries for Responsive Logo Size */
+        @media (max-width: 992px) {
+            .footer .logo {
+                width: 60px;
+                /* Slightly smaller on lg screens */
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer .logo {
+                width: 50px;
+                /* Adjusted for small screens */
+            }
+
+            .footer .social-icons a {
+                width: 30px;
+                height: 30px;
+            }
+
+            .footer .social-icons svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+
+        /* Missing Classes */
+        .ff-heading {
+            font-family: 'Arial', sans-serif;
+        }
+
+        .ff-neue-haas {
+            font-family: 'Arial', sans-serif;
+        }
+
+        .separator-line-sunset {
+            width: 80px;
+            height: 2px;
+            background-color: #ff4500;
+            margin: 0 auto;
+        }
+
+        .text-primary {
+            color: #3b82f6;
+        }
+
+        .bg-champagne {
+            background-color: #f7e7ce;
+        }
+
+        .border-subtle-grey {
+            border-color: #dee2e6;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 992px) {
+
+            #new,
+            #about,
+            #popular-destination,
+            #contact,
+            #our-services {
+                padding: 40px 0;
+                min-height: auto;
+            }
+
+            .carousel-item {
+                min-height: 40vh;
+            }
+
+            .welcome-community .row {
+                flex-direction: column;
+            }
+
+            .benefit-cards-container .row {
+                row-gap: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar-custom .nav-link {
+                font-size: 0.9rem;
+            }
+
+            .carousel-caption {
+                padding: 10px;
+            }
+
+            .feature-section .feature-card {
+                margin-bottom: 20px;
+            }
+
+            .footer .logo {
+                width: 40px;
+            }
+
+            .footer .social-icons a {
+                width: 30px;
+                height: 30px;
+            }
+
+            .footer .social-icons svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <!-- Header -->
+        <header class="p-3 navbar-custom">
+            <div class="container">
+                <div class="d-flex align-items-center justify-content-between nowrap">
+                    <a href="index.html" class="d-flex align-items-center text-white text-decoration-none">
+                        <img src="../assets/logo/logoipsum-356.svg" alt="Tourism in Bangladesh Logo" class="logo img-fluid" width="100">
+                    </a>
+                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-0 justify-content-center">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="ourservices.html">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="plan.html">Trip</a></li>
+                        <li class="nav-item"><a class="nav-link" href="recommend.html">Recommendations</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    </ul>
+                    <form class="d-flex col-12 col-lg-4 me-lg-3 mb-0" role="search">
+                        <input class="form-control form-control-custom me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-light" type="submit">Search</button>
+                    </form>
+                    <div class="text-end d-flex">
+                        <button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                        <button type="button" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#signupModal">Sign-up</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        </header>
+
+        <!-- Login Modal -->
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="loginForm">
+                            <div class="mb-3">
+                                <label for="loginEmail" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="loginEmail" placeholder="Enter your email"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="loginPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="loginPassword"
+                                    placeholder="Enter your password" required>
+                            </div>
+                            <button type="submit" class="btn btn-custom w-100">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Signup Modal -->
+        <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="signupForm">
+                            <div class="mb-3">
+                                <label for="signupName" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="signupName"
+                                    placeholder="Enter your full name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="signupEmail" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="signupEmail" placeholder="Enter your email"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="signupPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="signupPassword"
+                                    placeholder="Enter your password" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="signupConfirmPassword" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="signupConfirmPassword"
+                                    placeholder="Confirm your password" required>
+                            </div>
+                            <button type="submit" class="btn btn-custom w-100">Sign Up</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Section with Carousel -->
+        <section class="hero-section">
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="carousel-caption text-start">
+                            <h1>Beauty of Bangladesh</h1>
+                            <p>Discover the best #our-services.</p>
+                            <a href="#home" class="btn btn-light btn-lg">Get Started</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-caption text-center">
+                            <h1>Explore Our Features</h1>
+                            <p>Learn more about what makes us unique.</p>
+                            <a href="#our-services" class="btn btn-light btn-lg">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-caption text-end">
+                            <h1>Join Our Community</h1>
+                            <p>Become a part of our growing family.</p>
+                            <button type="button" class="btn btn-custom" data-bs-toggle="modal"
+                                data-bs-target="#signupModal">Sign-up</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Home Section -->
+        <div class="welcome-community pt-5 pb-4" id="home">
+            <div class="container-fluid pb-5">
+                <div class="row d-flex align-items-center flex-column flex-md-row flex-md-row-reverse g-4">
+                    <div class="col-12 col-md-6">
+                        <div class="w-100 ps-0 ps-lg-4">
+                            <img loading="lazy" alt="Travel in style, with exclusive VIP benefits"
+                                class="w-100 shadow-lg img-fluid" src="../assets/logo/bangladesh.jpg" />
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <h2 class="h2 ff-heading text-primary">Travel in style, with exclusive VIP benefits</h2>
+                        <div class="separator-line-sunset my-4"></div>
+                        <p class="ff-neue-haas">Indulge in luxury with our curated collection of the world's best hotels
+                            and enjoy exclusive VIP benefits, all at no extra cost.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid pb-5">
+                <div class="row d-flex align-items-center flex-column flex-md-row g-4">
+                    <div class="col-12 col-md-6">
+                        <div class="w-100 pe-0 pe-lg-4">
+                            <img loading="lazy" alt="Discover new inspiration for your next journey"
+                                class="w-100 shadow-lg img-fluid" src="../assets/logo/shyletjpg.jpg" />
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <h2 class="h2 ff-heading text-primary">Discover new inspiration for your next journey</h2>
+                        <div class="separator-line-sunset my-4"></div>
+                        <p class="ff-neue-haas">Whether it's beautiful destinations or thrilling experiences, ignite
+                            your wanderlust and discover new reasons to travel and explore.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid pb-5">
+                <div class="row d-flex align-items-center flex-column flex-md-row flex-md-row-reverse g-4">
+                    <div class="col-12 col-md-6">
+                        <div class="w-100 ps-0 ps-lg-4">
+                            <img loading="lazy" alt="Belong to a community with a shared passion"
+                                class="w-100 shadow-lg img-fluid" src="../assets/logo/Sundarbans.jpg" />
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <h2 class="h2 ff-heading text-primary">Belong to a community with a shared passion</h2>
+                        <div class="separator-line-sunset my-4"></div>
+                        <p class="ff-neue-haas">Connect with other members online or at our events and forge lasting
+                            friendships that transcend borders.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid pb-5">
+                <div class="row d-flex align-items-center flex-column flex-md-row g-4">
+                    <div class="col-12 col-md-6">
+                        <div class="w-100 pe-0 pe-lg-4">
+                            <img loading="lazy" alt="Discover new inspiration for your next journey"
+                                class="w-100 shadow-lg img-fluid" src="../assets/logo/river.jpg" />
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <h2 class="h2 ff-heading text-primary">Discover new inspiration for your next journey</h2>
+                        <div class="separator-line-sunset my-4"></div>
+                        <p class="ff-neue-haas">Whether it's beautiful destinations or thrilling experiences, ignite
+                            your wanderlust and discover new reasons to travel and explore.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Our Services Section -->
+        <section class="welcome-benefits" id="our-services">
+            <div class="container-fluid mb-5 pb-0">
+                <h2 class="h2 ff-heading text-center mt-3 mb-4">Our Services</h2>
+                <div class="separator-line-sunset mx-auto my-4"></div>
+                <div class="benefit-cards-container d-flex justify-content-center">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+                        <div class="col">
+                            <div
+                                class="benefit-card d-flex align-items-center flex-column h-100 py-4 px-2 bg-champagne border border-subtle-grey rounded-1">
+                                <img class="my-3" style="height: 50px;"
+                                    src="https://dv4xo43u9eo19.cloudfront.net/assets/scalable/hotel_perks-bdcaa39fcd11fbb0ec4cd1d6fb55d5b45e8efb84bbe90789d0c47b0adf8dd80e.svg"
+                                    alt="VIP Hotel Benefits Icon" />
+                                <div class="h5 text-primary ff-futura text-center text-uppercase my-3">VIP Hotel
+                                    Benefits</div>
+                                <div class="ff-neue-haas text-center pb-3 mx-auto px-3 lh-sm">Get room upgrades, hotel
+                                    credit and other VIP benefits with the ASMALLWORLD Collection</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div
+                                class="benefit-card d-flex align-items-center flex-column h-100 py-4 px-2 bg-champagne border border-subtle-grey rounded-1">
+                                <img class="my-3" style="height: 50px;"
+                                    src="https://dv4xo43u9eo19.cloudfront.net/assets/scalable/globe_pin-ed15bdf59cf6021c3b78ec4b52819a145083caa2eee0e9e65df4965cc47d0f08.svg"
+                                    alt="Global Community Icon" />
+                                <div class="h5 text-primary ff-futura text-center text-uppercase my-3">Global Community
+                                </div>
+                                <div class="ff-neue-haas text-center pb-3 mx-auto px-3 lh-sm">More than 75,000 members
+                                    in over 100 countries</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div
+                                class="benefit-card d-flex align-items-center flex-column h-100 py-4 px-2 bg-champagne border border-subtle-grey rounded-1">
+                                <img class="my-3" style="height: 50px;"
+                                    src="https://dv4xo43u9eo19.cloudfront.net/assets/scalable/events-719034586a1d736c9509f9a3846c1b8664505a0713d94cfd86351b7c62885472.svg"
+                                    alt="Events Icon" />
+                                <div class="h5 text-primary ff-futura text-center text-uppercase my-3">More than 800
+                                    Events</div>
+                                <div class="ff-neue-haas text-center pb-3 mx-auto px-3 lh-sm">Meet fellow members at our
+                                    exclusive premium-only events</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div
+                                class="benefit-card d-flex align-items-center flex-column h-100 py-4 px-2 bg-champagne border border-subtle-grey rounded-1">
+                                <img class="my-3" style="height: 50px;"
+                                    src="https://dv4xo43u9eo19.cloudfront.net/assets/scalable/umbrella-9f58067b3ac457cf0b8868ff1d59e8fd25fc1708a995e7c4350cb81518522287.svg"
+                                    alt="Travel Inspiration Icon" />
+                                <div class="h5 text-primary ff-futura text-center text-uppercase my-3">Daily Travel
+                                    Inspiration</div>
+                                <div class="ff-neue-haas text-center pb-3 mx-auto px-3 lh-sm">New editorials each day to
+                                    inspire your next trip</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div
+                                class="benefit-card d-flex align-items-center flex-column h-100 py-4 px-2 bg-champagne border border-subtle-grey rounded-1">
+                                <img class="my-3" style="height: 50px;"
+                                    src="https://dv4xo43u9eo19.cloudfront.net/assets/scalable/travel_perks-11672bdf5578df23ea877ef0d003e04689f56909723c5698d22f23e91ee7537e.svg"
+                                    alt="Travel Privileges Icon" />
+                                <div class="h5 text-primary ff-futura text-center text-uppercase my-3">Travel Privileges
+                                </div>
+                                <div class="ff-neue-haas text-center pb-3 mx-auto px-3 lh-sm">Enjoy exclusive savings
+                                    and tier upgrades from trusted travel brands</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div
+                                class="benefit-card d-flex align-items-center flex-column h-100 py-4 px-2 bg-champagne border border-subtle-grey rounded-1">
+                                <img class="my-3" style="height: 50px;"
+                                    src="https://dv4xo43u9eo19.cloudfront.net/assets/scalable/hotel_deals-829e5db88c3ed9cbbfb15a77f2371995179dfb242890ee3049026fc6fa7bdaa4.svg"
+                                    alt="Hotel Deals Icon" />
+                                <div class="h5 text-primary ff-futura text-center text-uppercase my-3">Hotel Deals</div>
+                                <div class="ff-neue-haas text-center pb-3 mx-auto px-3 lh-sm">Get free nights at the
+                                    world's best hotels with our special offers</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Section -->
+        <section class="feature-section" id="new">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <div class="feature-card">
+                            <h3>Feature One</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque aliquam odio
+                                et faucibus.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="feature-card">
+                            <h3>Feature Two</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque aliquam odio
+                                et faucibus.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="feature-card">
+                            <h3>Feature Three</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque aliquam odio
+                                et faucibus.</p>
+                        </div>
+                    </div>
+                </div>
+                <nav aria-label="Page navigation" class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="bg-dark text-white text-center">
+            <div class="container">
+                <h2>Explore the Beauty of Bangladesh</h2>
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <p>Tourism in Bangladesh includes tourism to World Heritage Sites, historical monuments,
+                            resorts, beaches, picnic spots, forests, tribal people, and wildlife of various species.
+                            Activities for tourists include angling, water skiing, river cruising, hiking, rowing,
+                            yachting, beachgoing, and sea bathing.</p>
+                        <p>In the northern part, comprising the Rangpur & Rajshahi division, there are archaeological
+                            sites, including the temple city Puthia in Rajshahi; the largest and most ancient
+                            archaeological site, Mahasthangarh in Bogra; the single largest Buddhist monastery, Paharpur
+                            in Naogaon; the most ornamental terracotta Hindu temple, Kantaji Temple, and many rajbaris
+                            or palaces of old zamindars.</p>
+                        <p>In the southeastern part of the Chittagong Division, there are natural and hilly areas like
+                            the Chittagong Hill Tracts, along with sandy sea beaches. The most notable beach, in Cox's
+                            Bazar, is a contender for the title of the longest unbroken sandy sea beach in the world.
+                        </p>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <figure>
+                            <img loading="lazy" alt="A scenic view of Bangladesh's natural beauty"
+                                class="w-100 shadow-lg img-fluid" src="https://picsum.photos/id/1041/500/500" />
+                            <figcaption>A scenic view of Bangladesh's natural beauty.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Contact Us</h2>
+                <p class="text-center text-muted mb-4">Have questions? We'd love to hear from you!</p>
+                <div class="row">
+                    <div class="col">
+                        <div class="contact-form">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Enter your name"
+                                        required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Enter your email"
+                                        required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">Subject</label>
+                                    <input type="text" class="form-control" id="subject" placeholder="Enter subject"
+                                        required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control" id="message" rows="4"
+                                        placeholder="Write your message" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-custom w-100">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <div class="container">
+            <div id="map-area">
+                <div class="plan-your-trip-heading-area">
+                    <p>Explore The Map</p>
+                    <h3>Digital Map For Tourist</h3>
+                </div>
+                <div class="map-waper" style="padding: 5px 15px;">
+                    <a href="https://gis.beautifulbangladesh.gov.bd/map?category=&division=&district=&common_feature=spot"
+                        target="_blank">
+                        <img src="https://beautifulbangladesh.gov.bd/frontend/assets/map/location-explore.jpeg"
+                            class="img-fluid w-100" alt="Tourist Map of Bangladesh">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popular Destinations Section -->
+        <section id="popular-destination" class="pt-5">
+            <div class="container">
+                <div class="text-center mb-4">
+                    <p class="text-uppercase">must visit</p>
+                    <h3 class="fw-bold">Popular Destinations</h3>
+                </div>
+                <div id="destinationCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#destinationCarousel" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#destinationCarousel" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#destinationCarousel" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row g-0">
+                                <div class="col-12 position-relative">
+                                    <img src="https://beautifulbangladesh.gov.bd/storage/backend/images/upload/thumbnil/nilgiri-2020-06-07-5edc99c426aa6.jpeg"
+                                        class="d-block w-100 img-fluid" alt="Nilgiri">
+                                    <div class="carousel-caption d-block">
+                                        <h5><a href="#" class="text-white text-decoration-none">Nilgiri</a></h5>
+                                        <p><a href="https://www.google.com/maps?q=21.9128751,92.3250791" target="_blank"
+                                                class="text-white"><i class="fas fa-map-marker-alt"></i> Bandarban
+                                                Sadar</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row g-0">
+                                <div class="col-12 position-relative">
+                                    <img src="https://beautifulbangladesh.gov.bd/storage/backend/images/upload/thumbnil/tea-gardens-of-srima-2020-06-08-5edda770f0335.jpg"
+                                        class="d-block w-100 img-fluid" alt="Tea Gardens of Srimangal">
+                                    <div class="carousel-caption d-block">
+                                        <h5><a href="#" class="text-white text-decoration-none">Tea Gardens of
+                                                Srimangal</a></h5>
+                                        <p><a href="https://www.google.com/maps?q=24.3092548,91.7504608" target="_blank"
+                                                class="text-white"><i class="fas fa-map-marker-alt"></i> Srimangal</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row g-0">
+                                <div class="col-12 position-relative">
+                                    <img src="https://beautifulbangladesh.gov.bd/storage/backend/images/upload/thumbnil/bahadur-shah-park-2020-05-10-5eb7c9a73d310.jpg"
+                                        class="d-block w-100 img-fluid" alt="Bahadur Shah Park">
+                                    <div class="carousel-caption d-block">
+                                        <h5><a href="#" class="text-white text-decoration-none">Bahadur Shah Park</a>
+                                        </h5>
+                                        <p><a href="https://www.google.com/maps?q=23.7093257,90.4122045" target="_blank"
+                                                class="text-white"><i class="fas fa-map-marker-alt"></i> Dhaka</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#destinationCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#destinationCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="d-flex flex-wrap justify-content-between align-items-center">
+                    <a href="index.html" class="logo">
+                        <img src="../assets/logo/logoipsum-356.svg" alt="Tourism in Bangladesh Logo" class="img-fluid">
+                    </a>
+                    <div class="company-info">
+                        <div class="company-name">Tourism in Bangladesh</div>
+                        <div class="copyright">© 2025 Tourism, Inc. All rights reserved.</div>
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://x.com/RealAbdulAzizk" aria-label="Follow us on X">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/abdulazizkhan.web/" aria-label="Follow us on Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/aak.aak.33/" aria-label="Follow us on Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path
+                                    d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            console.log('Login:', { email, password });
+            alert('Login successful!');
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('signupConfirmPassword').value;
+            if (password === confirmPassword) {
+                console.log('Signup:', { name, email, password });
+                alert('Signup successful!');
+            } else {
+                alert('Passwords do not match!');
+            }
+        });
+    </script>
+</body>
+
+</html>
